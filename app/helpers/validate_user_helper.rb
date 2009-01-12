@@ -1,0 +1,2 @@
+module ValidateUserHelper
+end
