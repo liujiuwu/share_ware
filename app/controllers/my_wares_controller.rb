@@ -11,15 +11,16 @@ class MyWaresController < ApplicationController
     p = {
       'sip_appkey' => '20426',
       'sip_appsecret' => '144098c0d58411ddbc14a92bef58a353',
-      'sip_apiname' => 'taobao.items.onsale.get',
+      #'sip_apiname' => 'taobao.items.onsale.get',
+      'sip_apiname' => 'taobao.items.get',
       'sip_timestamp' => Time.now.strftime("%Y-%m-%d %H:%M:%S"),
-      'sip_sessionid' => sessionid,
+      #'sip_sessionid' => sessionid,
       'format' => 'json',
       'page_no' => params[:page_no],
       'page_size' => params[:page_size],
       'v' => '1.0',
-      #'nicks' => params[:nick],
-      #'q' => params[:q],
+      'nicks' => params[:nick],
+      'q' => params[:q],
       'fields' => 'iid,title,nick,type,cid,pic_path, delist_time,price,post_fee'
     }
     p["sip_sign"] = MD5.hexdigest('144098c0d58411ddbc14a92bef58a353' + p.sort.flatten.join).upcase

@@ -35,10 +35,35 @@
               }});
 
             $(json.rsp.items).each(function(){
-              $('#taobao_item_body').append("<tr><td<a href=\""+this.pic_path+"\" taget=\"_blank\"><img src=\""+this.pic_path+"\" style=\"width:100px;height:100px;border:1px solid #DDD;padding:2px\"/></a></td></td><td><a href=\"http://auction1.taobao.com/auction/item_detail--"+this.iid+".jhtml\" target=\"_blank\">"+this.title+"</td><td>"+this.price+"</td><td>"+this.nick+"</td><td>"+this.delist_time+"</td></tr>");
+              $('#taobao_item_body').append("<tr><td><input type=\"checkbox\" name=\"iid\" value=\""+this.iid+"\"/></td><td<a href=\""+this.pic_path+"\" taget=\"_blank\"><img src=\""+this.pic_path+"\" style=\"width:100px;height:100px;border:1px solid #DDD;padding:2px\"/></a></td></td><td><a href=\"http://auction1.taobao.com/auction/item_detail--"+this.iid+".jhtml\" target=\"_blank\">"+this.title+"</td><td>"+this.price+"</td><td>"+this.nick+"</td><td><a class=\"shareWare\">分享</a></td></tr>");
             });
 
             $(".tablesorter tbody>tr:odd").addClass("odd");
+
+            $(".shareWare").click(function(){
+              $.blockUI({ message: $('#share_ware_dialog'), css: { width: '275px' } });
+              return false;
+            });
+
+            $('#yes').click(function() {
+            // update the block message
+              $.blockUI({ message: "<h1>Remote call in progress...</h1>" });
+
+              $.ajax({
+                  url: 'wait.php',
+                  cache: false,
+                  complete: function() {
+                      // unblock when remote call returns
+                      $.unblockUI();
+                  }
+              });
+          });
+
+          $('#no').click(function() {
+              $.unblockUI();
+              return false;
+          });
+
           }});
       },
       formSubmit:function(){
@@ -62,14 +87,21 @@
   <table id="taobao_item" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
     <thead>
       <tr>
-        <th  style="width:100px">图片</th>
-        <th>商品名称</th>
-        <th>商品价格</th>
-        <th>卖家</th>
-        <th>时间</th>
+        <th><input type="checkbox" name="checkAll"/></th>
+        <th>图片</th>
+        <th width="50%">商品名称</th>
+        <th width="20%">商品价格</th>
+        <th width="20%">卖家</th>
+        <th width="10%">分享</th>
       </tr>
     </thead>
     <tbody id="taobao_item_body"></tbody>
   </table>
   <div id="Pagination2" class="pagination"></div>
 </form>
+
+<div id="share_ware_dialog" style="display:none; cursor: default">
+        <h1>Would you like to contine?.</h1>
+        <input type="button" id="yes" value="Yes" />
+        <input type="button" id="no" value="No" />
+</div>
