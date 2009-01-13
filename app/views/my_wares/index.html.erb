@@ -1,2 +1,75 @@
-<h1>MyWares#index</h1>
-<p>Find me in app/views/my_wares/index.html.erb</p>
+<script>
+  (function($){
+    $(function(){
+      TaoBao.init();
+      $.formInit();
+      TaoBao.formSubmit();
+    });
+
+    function formElement(){
+		$("input[@type=text],textarea").addClass("input_box");
+		$("input[@type=button],input[@type='submit']").addClass("btn").addClass("wd1");
+		$("input[@type=text],textarea").focus(function(){$(this).addClass("input_box_focus")});
+		$("input[@type=text],textarea").blur(function(){$(this).removeClass("input_box_focus")});
+	}
+
+	$.formInit = function(){
+		formElement();
+	}
+
+    var TaoBao = {
+      init:function(){
+        $('input[@type=button][@name=search]').click(function(){
+          $('input[@type=hidden][@name=page_no]').val("1");
+          TaoBao.formSubmit();
+        });
+
+        $('#taobaoForm').ajaxForm({dataType:'json',success:function(json, statusText){
+            $('#taobao_item_body').html("");
+            var totalRows = parseInt(json.rsp.totalResults);
+            var pageNo = parseInt($('input[@type=hidden][@name=page_no]').val());
+            var pageSize = parseInt($('input[@type=hidden][@name=page_size]').val());
+            $('.pagination').pagination(totalRows,{current_page:pageNo-1,prev_text:"上一页",next_text:"下一页",items_per_page:pageSize,num_edge_entries: 2,num_display_entries: 8,callback: function(page_id, panel){
+                $('input[@type=hidden][@name=page_no]').val(page_id+1);
+                TaoBao.formSubmit();
+              }});
+
+            $(json.rsp.items).each(function(){
+              $('#taobao_item_body').append("<tr><td<a href=\""+this.pic_path+"\" taget=\"_blank\"><img src=\""+this.pic_path+"\" style=\"width:100px;height:100px;border:1px solid #DDD;padding:2px\"/></a></td></td><td><a href=\"http://auction1.taobao.com/auction/item_detail--"+this.iid+".jhtml\" target=\"_blank\">"+this.title+"</td><td>"+this.price+"</td><td>"+this.nick+"</td><td>"+this.delist_time+"</td></tr>");
+            });
+
+            $(".tablesorter tbody>tr:odd").addClass("odd");
+          }});
+      },
+      formSubmit:function(){
+        $('#taobaoForm').submit();
+      }
+    }
+  })(jQuery);
+</script>
+
+<form action="/mywares" method="post" id="taobaoForm">
+  <div class="box">
+    <input type="hidden" name="page_no" value="1"/>
+    <input type="hidden" name="page_size" value="20"/>
+    商品关键词：
+    <input type="text" name="q" value="rails"/>
+    &nbsp;&nbsp;卖家：
+    <input type="text" name="nick" value=""/>
+    <input type="button" name="search" value="搜索">
+  </div>
+
+  <table id="taobao_item" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+    <thead>
+      <tr>
+        <th  style="width:100px">图片</th>
+        <th>商品名称</th>
+        <th>商品价格</th>
+        <th>卖家</th>
+        <th>时间</th>
+      </tr>
+    </thead>
+    <tbody id="taobao_item_body"></tbody>
+  </table>
+  <div id="Pagination2" class="pagination"></div>
+</form>

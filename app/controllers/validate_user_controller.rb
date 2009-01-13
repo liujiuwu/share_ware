@@ -23,10 +23,11 @@ class ValidateUserController < ApplicationController
     resp  = Net::HTTP.post_form(url, p)
     result = JSON.parse(resp.body)
     if result['response'] == "0" || result['response'] == "1" then
-      redirect_to "http://www.qq.com"
+      redirect_to :controller => "my_wares"
     else
       render :text => return_message(result['response'])
     end
+    #    render :text => return_message(result['response'])
   end
 
   private

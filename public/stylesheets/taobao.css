@@ -1,0 +1,408 @@
+@CHARSET "UTF-8";
+
+body,div,span,h1,h2,h3,h4,img,p,b,textarea,input,select,form,a,table,tr,td
+{margin:0;padding:0;font-family:verdana,Arial, Helvetica, sans-serif;}
+image{border:none;}
+a{text-decoration:none;color:#10478c;}
+a:hover{color:#ff5a00;text-decoration:none;}
+
+.hover {color:#ff5a00;text-decoration:none;cursor:pointer}
+.date_st{cursor: pointer; border: 1px solid red;}
+
+fieldset{margin:0;padding:0}
+legend{margin:0;padding:0 5px;}
+textarea{font-size:12px;}
+
+body{font:normal 12px Verdana;padding:5px;color:black;margin:0;}
+.red{color:red;}
+.green{color:green;}
+.orange{color:#FF5A00;}
+.center{text-align:center;}
+.b{font-weight:bold;}
+
+.labelSelected{padding-right:15px;font-weight:bold;color:#ff5a00;background:url(../images/checked.gif) no-repeat center right;}
+#gloading,#getData{display:none;position:absolute;top:12px;right:10px;z-index:60;padding:2px 9px 2px 6px;background:#FFFFDD;border:1px solid #E3E197;padding:3px 8px;}
+#gloading_error{display:none;position:absolute;top:12px;right:10px;z-index:60;padding:2px 9px 2px 6px;background:#FFFFDD;border:1px solid #E3E197;padding:3px 8px;}
+
+input[type=checkbox],
+input[type=radio] {margin:0px;}
+.pagination {
+            font-size: 12px;
+            margin:5px 0;
+            float:right;
+        }
+        
+.pagination a {
+    text-decoration: none;
+	border: solid 1px #AAE;
+	color: #15B;
+}
+
+.pagination a, .pagination span {
+    display: block;
+    float: left;
+    padding: 0.3em 0.5em;
+    margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.pagination .current {
+    background: #26B;
+    color: #fff;
+	border: solid 1px #AAE;
+}
+
+.pagination .current.prev, .pagination .current.next{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+}
+
+
+/*
+Plugin Name: WP-Digg Style Paginator
+Plugin URI: http://www.mis-algoritmos.com/2007/09/09/wp-digg-style-pagination-plugin-v-10/
+Author: Victor De la Rocha
+Author URI: http://www.mis-algoritmos.com
+*/
+div.pagination {
+	padding:3px;
+	margin:3px;
+	text-align:center;
+}
+
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #2C2C2C;
+	text-decoration: none;
+	color: #fff;
+	background: #2C2C2C url(../images/image1.gif);
+}
+
+div.pagination a:hover, div.pagination a:active {
+	border:1px solid #AAD83E;
+	color: #FFF;
+	background: #AAD83E url(image2.gif);
+}
+
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #AAD83E;
+  font-weight: bold;
+	background: #AAD83E url(../images/image2.gif);
+	color: #FFF;
+}
+
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin-right: 2px;
+	border: 1px solid #f3f3f3;
+	color: #ccc;
+}
+
+
+
+/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:0px;
+	font-size: 12px;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 12px;
+	font-weight:normal;
+	padding: 4px;
+	white-space:nowrap;
+}
+table.tablesorter thead tr .header {
+	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 5px;
+	background-color: #FFF;
+	/*vertical-align: top;*/
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F7F7F7;
+}
+table.tablesorter tbody tr.over td{background:#FFFDD7}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(../images/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(../images/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
+#selectWareInfos th,#selectWareInfos td{padding:1px 5px}
+#selectPresents th,#selectPresents td{padding:1px 5px}
+
+.input_box{border:1px solid #A9C9E2;padding:2px 3px!important;padding:1px 3px}
+.input_box_focus{border:1px solid #ADCD3C;}
+.wd1 {width:52px;margin:1px 2px 0 0}
+.wd2 {width:72px;margin:1px 2px 0 0}
+.btn,button {font-size:12x;height:auto;*height:22px;line-height:16px;*line-height:18px;padding:0;*padding:0;}
+
+/*商品类型维护*/
+#maintainGoodsType{}
+#goodsTypeSearch{padding:5px;background:#E8F5FE;border:1px solid #A9C9E2;margin-bottom:8px;}
+#search_table td{*padding:1px 0;}
+.box,#goodsTypeNavigationBar{padding:2px 5px;background:#E8F5FE;border:1px solid #A9C9E2;margin-bottom:8px;}
+#goodsTypeNavigationBar table{margin:0;}
+#goodsTypesTool{padding:5px;padding-bottom:2px;background:#FFF;border:none;}
+#goodsTypesTool a{margin-right:10px;}
+#foreground_image{margin-bottom:10px;}
+.form_label{text-align:right;white-space:nowrap;}
+.image_box{border:1px solid #DDD;padding:3px;margin:10px 0;}
+.title_line{width:100%;height:1px;border-bottom:1px solid #ADCD3C;margin:2px 0;}
+.error_box{border:2px solid red;}
+.editForm td{padding:1px 0;}
+#sideNavigation{padding-top:10px}
+#sideImageNavigation{padding-top:10px}
+#sideNavigation a{margin-right:10px;}
+#sideImageNavigation a{margin-right:10px;}
+#printSides{}
+.divSide{height:100px;width:500px;overflow:auto;border:1px solid red}
+.side{display:none;border:1px solid #3c78b5; background-color: #D8E4F1; text-align:left; margin:5px 0;}
+#layer6_sub{display:none;}
+.rawTypeSelect{border:1px solid #3c78b5; background-color: #D8E4F1; text-align:left; margin:5px 0;}
+.rawTypeSelect td{background-color: #D8E4F1;}
+#guide_page{margin:5px 0;}
+#guide_page td{padding:5px;}
+#goodsTypeInfo{margin:5px 0;}
+#viewGoodsPricesInfo{border-left:1px solid #DDD;border-top:1px solid #DDD;border-right:1px solid #FFF;border-bottom:1px solid #FFF;height:200px;overflow-y:auto;overflow-x:hidden;}
+#goodsTypePriceDiv{display:none;border:1px solid #3c78b5; background-color: #D8E4F1; text-align:left; margin:5px 0;padding:5px;}
+.xml{width:500px;height:150px;}
+.title{font-size:14px;font-weight:bold;color:#FF5A00;padding:3px 0;}
+
+
+#wareInfosDiv{clear:both;}
+.toolBar{padding:2px 5px;background:#E8F5FE;border:1px solid #A9C9E2;margin-bottom:8px;}
+.jqTagSelector,.categorySelect{width:120px;margin-right:5px;}
+
+#otherWareInfosTable th,#otherWareInfosTable td{padding:1px 4px}
+#baleWareInfosTable th,#baleWareInfosTable td{padding:1px 4px}
+
+
+/* jqModal base Styling courtesy of;
+  Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+  the Window's z-index value will be set to 3000 by default (in jqModal.js). You
+  can change this value by either;
+    a) supplying one via CSS
+    b) passing the "zIndex" parameter. E.g.  (window).jqm({zIndex: 500}); */
+  
+.jqmWindow {
+    display: none;
+    
+    position: fixed;
+    top: 17%;
+    left: 50%;
+    
+    margin-left: -300px;
+    width: 600px;
+    
+    background-color: #F2FDDB;
+    color: #333;
+    border: 1px solid #ADCD3C;
+    padding: 12px;
+}
+
+.jqmWindow1 {
+    display: none;
+    color: #333;
+    padding: 12px;
+}
+
+.jqmOverlay { background-color: #000; }
+
+/* Fixed posistioning emulation for IE6
+     Star selector used to hide definition from browsers other than IE6
+     For valid CSS, use a conditional include instead */
+* html .jqmWindow {
+     position: absolute;
+     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+}
+
+.jqmAlertTitle{
+  margin:2px;
+  color:#000;
+  clear:both;
+}
+.jqmAlertTitle h1{
+  padding-left:5px;
+  padding:0;
+  font-size:14px;
+  letter-spacing:1px;
+  font-weight:bold;
+  width:390px;
+  text-align:left;
+  color:#000;
+  float:left;
+}
+
+.jqmClose em{display:none;}
+.jqmClose {
+  width:20px;
+  height:20px;
+  display:block;
+  float:right;
+  clear:right;
+  background:transparent url(../images/close_icon_double.png) 0 0 no-repeat;
+}
+
+a.jqmClose:hover,div.jqmAlert a.jqmCloseHover{ background-position: 0 -20px; }
+
+div.jqmAlertContent{
+  border-top:px;
+  letter-spacing:0px;
+}
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+
+
+/* warning panel */
+.warningPanel { background: #FFFFCE; border:#F0C000 1px solid; padding: 8px; margin: 10px 0; }
+/* alert panel */
+.alertPanel { background: #FFCCCC; border:#C00 1px solid; padding: 8px; margin: 10px; }
+/* info panel */
+.infoPanel { background: #D8E4F1; border:#3c78b5 1px solid; padding: 8px; margin: 10px; }
+
+.noteMacro { border-style: solid; border-width: 1px; border-color: #F0C000; background-color: #FFFFCE; text-align:left; margin-top: 5px; margin-bottom: 5px}
+.infoMacro { border-style: solid; border-width: 1px; border-color: #3c78b5; background-color: #D8E4F1; text-align:left; margin-top: 5px; margin-bottom: 5px}
+.warningMacro { border-style: solid; border-width: 1px; border-color: #c00; background-color: #fcc; text-align:left; margin-top: 5px; margin-bottom: 5px}
+.tipMacro { border-style: solid; border-width: 1px; border-color: #090; background-color: #dfd; text-align:left; margin-top: 5px; margin-bottom: 5px}
+.informationMacroPadding { padding: 5px 0 0 5px; }
+
+table.infoMacro td, table.warningMacro td, table.tipMacro td, table.noteMacro td, table.sectionMacro td {
+    border: none;
+}
+
+
+
+.textarea {
+width: 95%;
+height: 300px;
+border: 0px;
+background: #fff;
+overflow: hidden;
+font: 10pt "Courier New",Courier,"宋体";
+background: #fcfcfc;
+}
+.jssc {
+font: 10pt "Courier New","宋体";
+border: 1px solid #ccc;
+background-color: #f3f3f3;
+padding-top: 1px;
+padding-right: 2px;
+padding-bottom: 1px;
+padding-left: 5px;
+margin: 5px 2px 10px 2px;
+overflow: auto;
+}
+.jssccodetitle {
+font: 9pt Verdana,"宋体";
+margin: 20px 0px 5px 40px;
+font-weight: bold;
+color: #79a;
+}
+.jssccodetitle span{
+margin-Left: 30px;
+font-weight: normal;
+text-decoration: underline;
+cursor: pointer;
+}
+.jssc ul {
+margin: 0px;
+padding: 0px;
+list-style: decimal outside;
+background-color: #fff;
+border-left: 1px solid #abc;
+color: #999;
+}
+.jssc ul li div {
+color: #333;
+padding-left: 6px;
+}
+.jssc img {
+vertical-align: top;
+margin-right: 5px;
+width: 11px;
+height: 16px;
+}
+.jssc .alt {
+background-color: #fafafa;
+}
+.jssc .javascriptcomment, .jssc .javacomment, .jssc .ccomment, .jssc .cppcomment, .jssc .phpcomment, .jssc .csharpcomment, .jssc .vbcomment, .jssc .rubycomment, .jssc .delphicomment, .jssc .sqlcomment, .jssc .actionscriptstring, .jssc .htmlcomment, .jssc .xmlcomment, .jssc .pythoncomment {
+color: #090;
+}
+.jssc .javascriptstring, .jssc .javastring, .jssc .ckeywords, .jssc .cppkeywords, .jssc .phpkeywords, .jssc .csharpkeywords, .jssc .vbkeywords, .jssc .rubykeywords, .jssc .delphikeywords, .jssc .sqlkeywords, .jssc .actionscriptkeywords, .jssc .pythonkeywords, .jssc .csskeywords, .jssc .xmlvariables, .jssc .htmlnum, .jssc .xmlsign, .jssc .htmlsign {
+color: #33f;
+}
+.jssc .javascriptchar, .jssc .javachar, .jssc .cchar, .jssc .cppchar, .jssc .phpchar, .jssc .rubychar, .jssc .actionscriptchar {
+	color: #e9a;
+}
+.jssc .javascriptnum, .jssc .javanum, .jssc .cstring, .jssc .cppstring, .jssc .phpstring, .jssc .rubystring, .jssc .delphistring, .jssc .sqlstring, .jssc .actionscriptnum, .jssc .pythonstring, .jssc .pythonchar, .jssc .htmlvariables, .jssc .cssnum {
+color: #f33;
+}
+.jssc .javakeywords {
+color: #905;
+font-weight: bold;
+}
+.jssc .cnum, .jssc .cppnum, .jssc .phpnum, .jssc .csharpnum, .jssc .vbnum, .jssc .delphinum, .jssc .sqlnum, .jssc .rubynum, .jssc .pythonnum, .jssc .htmlkeywords, .jssc .xmlkeywords {
+color: #a36;
+}
+.jssc .javascriptkeywords, .jssc .phpvariables, .jssc .rubyvariables, .jssc .cssstring, .jssc .htmlchar, .jssc .xmlchar, .jssc .htmlstring, .jssc .xmlstring {
+color: #f6f;
+}
+.jssc .csharpstring, .jssc .vbstring, .jssc .rubysymbol {
+color: #900;
+}
+.jssc .csharpregion, .jssc .vbregion, .jssc .actionscriptcomment, .jssc .csscomment {
+color: #ccc;
+}
+
+
+.tableForm{border:1px solid #A9C9E2;width:100%;margin:10px 0;}
+.tableForm td{padding:2px}
+.formTitle{background:#E8F5FE;padding:5px;border-bottom:1px solid #A9C9E2;}
+.formTitle span{padding:5px;}
+
+table.form {font-size: 12px;color: black;background:#EAEBEC;padding:0px;width:100%;empty-cells:show;}
+.form th {font-size:12px;padding:3px;line-height:24px;background:#F8FAFC;}
+.form td {font-size:12px;padding:3px;line-height:24px;background:#F8FAFC;}
+.form td.field{text-align:right;}
+.form-line-odd{background-color:#FFFFFF;}
+.form-line-even{background-color:#F1FCFF;}
+.form .typeTitle{font-size:14px;font-weight:bold;color:#FF5A00;padding:3px;}
+
+
+.dialog_content {padding:5px;}
