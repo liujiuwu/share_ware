@@ -1,0 +1,107 @@
+<script>
+  (function($){
+    $(function(){
+      TaoBao.init();
+      $.formInit();
+      TaoBao.formSubmit();
+    });
+
+    function formElement(){
+		$("input[@type=text],textarea").addClass("input_box");
+		$("input[@type=button],input[@type='submit']").addClass("btn").addClass("wd1");
+		$("input[@type=text],textarea").focus(function(){$(this).addClass("input_box_focus")});
+		$("input[@type=text],textarea").blur(function(){$(this).removeClass("input_box_focus")});
+	}
+
+	$.formInit = function(){
+		formElement();
+	}
+
+    var TaoBao = {
+      init:function(){
+        $('input[@type=button][@name=search]').click(function(){
+          $('input[@type=hidden][@name=page_no]').val("1");
+          TaoBao.formSubmit();
+        });
+
+        $('#taobaoForm').ajaxForm({dataType:'json',success:function(json, statusText){
+            $('#taobao_item_body').html("");
+            var totalRows = parseInt(json.rsp.totalResults);
+            var pageNo = parseInt($('input[@type=hidden][@name=page_no]').val());
+            var pageSize = parseInt($('input[@type=hidden][@name=page_size]').val());
+            $('.pagination').pagination(totalRows,{current_page:pageNo-1,prev_text:"上一页",next_text:"下一页",items_per_page:pageSize,num_edge_entries: 2,num_display_entries: 8,callback: function(page_id, panel){
+                $('input[@type=hidden][@name=page_no]').val(page_id+1);
+                TaoBao.formSubmit();
+              }});
+
+            $(json.rsp.items).each(function(){
+              $('#taobao_item_body').append("<tr><td><input type=\"checkbox\" name=\"iid\" value=\""+this.iid+"\"/></td><td<a href=\""+this.pic_path+"\" taget=\"_blank\"><img src=\""+this.pic_path+"\" style=\"width:100px;height:100px;border:1px solid #DDD;padding:2px\"/></a></td></td><td><a href=\"http://auction1.taobao.com/auction/item_detail--"+this.iid+".jhtml\" target=\"_blank\">"+this.title+"</td><td>"+this.price+"</td><td>"+this.nick+"</td><td><a class=\"shareWare\">分享</a></td></tr>");
+            });
+
+            $(".tablesorter tbody>tr:odd").addClass("odd");
+
+            $(".shareWare").click(function(){
+              $.blockUI({ message: $('#share_ware_dialog'), css: { width: '275px' } });
+              return false;
+            });
+
+            $('#yes').click(function() {
+            // update the block message
+              $.blockUI({ message: "<h1>Remote call in progress...</h1>" });
+
+              $.ajax({
+                  url: 'wait.php',
+                  cache: false,
+                  complete: function() {
+                      // unblock when remote call returns
+                      $.unblockUI();
+                  }
+              });
+          });
+
+          $('#no').click(function() {
+              $.unblockUI();
+              return false;
+          });
+
+          }});
+      },
+      formSubmit:function(){
+        $('#taobaoForm').submit();
+      }
+    }
+  })(jQuery);
+</script>
+
+<form action="/mywares" method="post" id="taobaoForm">
+  <div class="box">
+    <input type="hidden" name="page_no" value="1"/>
+    <input type="hidden" name="page_size" value="20"/>
+    商品关键词：
+    <input type="text" name="q" value="rails"/>
+    &nbsp;&nbsp;卖家：
+    <input type="text" name="nick" value="<%=@user_name%>"/>
+    <input type="button" name="search" value="搜索">
+  </div>
+
+  <table id="taobao_item" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+    <thead>
+      <tr>
+        <th><input type="checkbox" name="checkAll"/></th>
+        <th>图片</th>
+        <th width="50%">商品名称</th>
+        <th width="20%">商品价格</th>
+        <th width="20%">卖家</th>
+        <th width="10%">分享</th>
+      </tr>
+    </thead>
+    <tbody id="taobao_item_body"></tbody>
+  </table>
+  <div id="Pagination2" class="pagination"></div>
+</form>
+
+<div id="share_ware_dialog" style="display:none; cursor: default">
+        <h1>Would you like to contine?.</h1>
+        <input type="button" id="yes" value="Yes" />
+        <input type="button" id="no" value="No" />
+</div>

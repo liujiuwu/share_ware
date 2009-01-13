@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
+  map.vindex "/vindex",:controller => 'my_wares',:action =>'vindex'
   map.mywares "/mywares",:controller => 'my_wares',:action =>'my_wares'
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
