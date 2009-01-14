@@ -25,6 +25,11 @@
         });
 
         $('#taobaoForm').ajaxForm({dataType:'json',success:function(json, statusText){
+            if(json.login_url){
+              $('#session_user').html("<a href=\""+json.login_url+"\">请点击这里登录淘宝获取授权，否则无法抓取商品！</a>");
+              return false;
+            }
+            
             $('#taobao_item_body').html("");
             var totalRows = parseInt(json.rsp.totalResults);
             var pageNo = parseInt($('input[@type=hidden][@name=page_no]').val());
@@ -72,7 +77,7 @@
     }
   })(jQuery);
 </script>
-
+<div id="session_user"></div>
 <form action="/mywares" method="post" id="taobaoForm">
   <input type="hidden" name="page_no" value="1"/>
   <input type="hidden" name="page_size" value="2"/>
