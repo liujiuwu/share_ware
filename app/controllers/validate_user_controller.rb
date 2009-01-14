@@ -16,7 +16,7 @@ class ValidateUserController < ApplicationController
       'token' => params[:token],
       'appId' => params[:app_id],
       'sip_timestamp' => Time.now.strftime("%Y-%m-%d %H:%M:%S"),
-      'sip_sessionid' => '063261cda065408e9401d81973e72c10',
+      #'sip_sessionid' => '063261cda065408e9401d81973e72c10',
       'format' => 'json'
     }
     p["sip_sign"] = MD5.hexdigest('144098c0d58411ddbc14a92bef58a353' + p.sort.flatten.join).upcase
